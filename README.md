@@ -1,0 +1,2 @@
+# honto_library_extension
+hontoの紙の本画面で図書館蔵書情報を確認する

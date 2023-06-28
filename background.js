@@ -1,5 +1,7 @@
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    if (request.method === "getISBN") {
-        console.log(`Received ISBN: ${request.isbn}`);
+chrome.runtime.onMessage.addListener(async function (request, sender, sendResponse) {
+    console.log('background.js L10')
+    console.log(request)
+    if (request.method === "getIsbnAndLibraryData") {
+        console.log(`called getIsbnAndLibraryData()`);
     }
 });

@@ -35,16 +35,23 @@ function getSystemId() {
  * 蔵書データを取得する
  * @param {int} isbn
  */
-async function getLibraryData() {
-  const isbn = findISBN()
+async function getLibraryData(isbn) {
+  console.log('content.js L39 -- getLibraryData()')
   const systemid = await getSystemId();
   const APP_KEY = '1516cf2b8ea62e23051f757b90fcdedf'
 
   return new Promise((resolve, reject) => {
     if (systemid !== null && isbn > 0) {
-      fetch(`https://api.calil.jp/check?appkey=${APP_KEY}&isbn=${isbn}&systemid=${systemid}&format=json`)
-        .then(response => response.json())
+      console.log('content.js L45')
+      const url = `https://api.calil.jp/check?appkey=${APP_KEY}&isbn=${isbn}&systemid=${systemid}&format=json&callback=`;
+      console.log(url)
+      fetch(url)
+        .then(response => {
+          console.log(response)
+          response.json()
+        })
         .then(data => {
+          console.log('content.js L54')
           console.log(data)
           let libraryDataElement = document.createElement('div');
           libraryDataElement.innerHTML = `
@@ -68,32 +75,17 @@ async function getLibraryData() {
   });
 }
 
+async function getIsbnAndLibraryData() {
+  const isbn = await findISBN();
+  await getLibraryData(isbn)
+}
+
 chrome.runtime.onMessage.addListener(async function (request, sender, sendResponse) {
-  if (request.method === "getLibraryData") {
-    const data = await getLibraryData(request.isbn);
-    console.log(`Retrieved library data: ${data}`);
-    sendResponse({ method: "getLibraryData", data: data });
-  } else if (request.method === "getISBN") {
-    // ISBNの取得
-    const isbn = findISBN();
-    console.log(isbn)
-    if (isbn) {
-      // ISBNをポップアップに返す
-      sendResponse({ method: "getISBN", isbn: isbn });
-    } else {
-      // エラーが発生した場合
-      sendResponse({ method: "getISBN", error: "ISBN could not be found." });
-    }
-  } else if (request.method === "getSystemId") {
-    // systemIdの取得
-    const systemId = await getSystemId();
-    if (systemId) {
-      // systemIdをポップアップに返す
-      sendResponse({ method: "getSystemId", systemId: systemId });
-    } else {
-      // エラーが発生した場合
-      sendResponse({ method: "getSystemId", error: "systemId could not be found." });
-    }
+  console.log(request)
+  if (request.method === "getIsbnAndLibraryData") {
+    await getIsbnAndLibraryData();
+    console.log(`Retrieved getIsbnAndLibraryData`);
+    sendResponse({ method: "getIsbnAndLibraryData" });
   }
-  return true;  // 応答を非同期に保持する
+  return true; // 応答を非同期に保持する
 });

@@ -68,7 +68,7 @@
       if (availableEntry) {
         badge.className = 'hle-badge hle-ok';
         const link = document.createElement('a');
-        link.href = calilUrl;
+        link.href = reserveurl || calilUrl;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
         link.textContent = `${libraryName || '図書館'} に蔵書あり（${firstStatus}）`;

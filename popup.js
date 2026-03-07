@@ -1,16 +1,14 @@
-document.getElementById('find').addEventListener('click', async function () {
-    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    if (tab) {
-        // content scriptを実行
-        chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            files: ['content.js']
-        });
-    }
+(async () => {
+  const { libraryName } = await chrome.storage.sync.get('libraryName');
+  const contentEl = document.getElementById('content');
 
-    chrome.tabs.sendMessage(tab.id, { method: "getIsbnAndLibraryData" }, function (getIsbnAndLibraryResponse) {
-        console.log('in sendMessage()')
-        console.log(getIsbnAndLibraryResponse)
-        return true;
-    })
-});
+  if (libraryName) {
+    contentEl.innerHTML = `設定中の図書館: <span id="libraryName">${libraryName}</span>`;
+  } else {
+    contentEl.innerHTML = `図書館が未設定です。<br><a href="#" id="optionsLink">オプションページで設定する</a>`;
+    document.getElementById('optionsLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      chrome.runtime.openOptionsPage();
+    });
+  }
+})();

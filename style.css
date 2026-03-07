@@ -1,0 +1,63 @@
+.hle-notice {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin: 8px;
+  font-size: 14px;
+  color: #856404;
+}
+
+.hle-badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.hle-loading {
+  background: #e9ecef;
+  color: #6c757d;
+}
+
+.hle-ok {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.hle-ok a {
+  color: #155724;
+  text-decoration: underline;
+}
+
+.hle-reservation {
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+}
+
+.hle-reservation a {
+  color: #856404;
+  text-decoration: underline;
+}
+
+.hle-none {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #6c757d;
+}
+
+.hle-unknown {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #6c757d;
+}
+
+.hle-error {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}

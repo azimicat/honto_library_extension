@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "honto Library Extension",
+  "version": "1.0",
+  "description": "hontoウィッシュリストの本が図書館にあるか確認",
+  "permissions": ["storage"],
+  "action": { "default_popup": "popup.html" },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [{
+    "matches": ["https://honto.jp/my/wishlist*"],
+    "js": ["content.js"],
+    "css": ["style.css"]
+  }],
+  "options_page": "options.html",
+  "host_permissions": ["https://api.calil.jp/*", "https://honto.jp/*"]
+}

@@ -8,12 +8,16 @@ async function loadSavedLibrary() {
 }
 
 document.getElementById('searchBtn').addEventListener('click', async () => {
-  const pref = document.getElementById('pref').value.trim();
+  const pref = document.getElementById('pref').value;
   const city = document.getElementById('city').value.trim();
   const errorEl = document.getElementById('error');
   const listEl = document.getElementById('libraryList');
 
   errorEl.textContent = '';
+  if (!pref) {
+    errorEl.textContent = '都道府県を選択してください';
+    return;
+  }
   listEl.innerHTML = '<div style="padding:8px;color:#666;">検索中...</div>';
 
   try {
@@ -60,3 +64,5 @@ async function selectLibrary(item, lib) {
 }
 
 loadSavedLibrary();
+
+document.getElementById('closeBtn').addEventListener('click', () => window.close());

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>図書館設定 - honto Library Extension</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      width: 400px;
+      padding: 16px;
+    }
+    h1 { font-size: 18px; margin-bottom: 16px; }
+    label { display: block; margin-bottom: 4px; font-size: 14px; }
+    input[type="text"] {
+      width: 100%;
+      padding: 6px 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 6px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #f0f0f0;
+    }
+    button:hover { background: #e0e0e0; }
+    #libraryList {
+      margin-top: 12px;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .library-item {
+      padding: 8px 12px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+    .library-item:last-child { border-bottom: none; }
+    .library-item:hover { background: #f5f5f5; }
+    .library-item.selected {
+      background: #d4edda;
+      font-weight: bold;
+    }
+    #status {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #155724;
+    }
+    #error {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+  <h1>図書館設定</h1>
+  <label for="pref">都道府県</label>
+  <input type="text" id="pref" placeholder="例: 福岡県">
+  <label for="city">市区町村</label>
+  <input type="text" id="city" placeholder="例: 福岡市">
+  <button id="searchBtn">図書館を検索</button>
+  <div id="error"></div>
+  <div id="libraryList"></div>
+  <div id="status"></div>
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- 背景 -->
+  <rect width="128" height="128" rx="24" fill="#2563EB"/>
+
+  <!-- 屋根（三角） -->
+  <polygon points="64,14 104,42 24,42" fill="white"/>
+
+  <!-- 柱（左右） -->
+  <rect x="28" y="42" width="10" height="48" fill="white"/>
+  <rect x="90" y="42" width="10" height="48" fill="white"/>
+
+  <!-- 台座 -->
+  <rect x="20" y="90" width="88" height="8" rx="2" fill="white"/>
+
+  <!-- "h" の文字（図書館の中央に重ねる） -->
+  <text x="64" y="86" font-family="Georgia, serif" font-size="46" font-weight="bold"
+        text-anchor="middle" fill="white">h</text>
+</svg>

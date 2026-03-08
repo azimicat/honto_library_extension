@@ -1,0 +1,8 @@
+prepare-commit-msg:
+  jobs:
+    - name: auto-commit-message
+      run: sh "$(git rev-parse --show-toplevel)/.local/bin/claude-commit-msg-gen" {1} {2}
+      env:
+        # コミットメッセージ生成に使うプロンプトファイルのパス（プロジェクトルートからの相対パス）
+        # 別のプロンプトを使う場合はファイルパスを変更する
+        COMMIT_PROMPT_FILE: scripts/commit-prompt.txt

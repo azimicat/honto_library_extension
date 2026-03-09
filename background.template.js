@@ -1,4 +1,4 @@
-const APP_KEY = '***REMOVED***';
+const APP_KEY = '__CALIL_APP_KEY__';
 
 async function fetchIsbnFromHonto(url) {
   const res = await fetch(url);

@@ -1,2 +1,4 @@
 .vscode
 lefthook-local.yml
+.env
+background.js
